@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+ <meta charset="utf-8">
+ <title>サイトタイトル</title>
+ <style type = "text/css">
+    .gray{
+        color: gray;
+    }
+</style>
+ <meta name="description" content="サイトキャプションを入力">
+ <meta name="keywords" content="サイトキーワードを,で区切って入力">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!--[if lt IE 9]>
+ <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+ <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+ <![endif]-->
+ <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ </head>
+ 
+ <body>
+     <div id="app" class="container">
+         <div class="row d-flex justify-content-center">
+             <h2 class="mt-3">計算機</h2>
+
+         </div>
+         <div class="row">
+             <form>
+             <div class="col-sm">
+                <div  class="input-group input-group-lg my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">売値</span>
+                    </div>
+                    <input required v-model="selling_price" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <div class="input-group input-group-lg my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">原価</span>
+                    </div>
+                    <input required v-model="cost" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <div class="input-group input-group-lg my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">配送料</span>
+                    </div>
+                    <input required v-model="delivery_fee" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <div class="input-group input-group-lg my-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">利益</span>
+                    </div>
+                    <input required v-model="profit" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <div>
+                    <button class="btn-lg btn btn-primary" @click.prevent="calSellingPrice">売値算出</button>
+                    <button class="btn-lg btn btn-success" @click.prevent="calProfit">利益算出</button>
+                </div>
+                <form>
+
+
+                
+
+             </div>
+            
+
+         </div>
+        
+
+     </div>
+    
+   
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ </body>
+</html>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selling_price:0,
+            delivery_fee:0,
+            cost:0,
+            profit:0,
+
+        },
+        methods:{
+           
+            calSellingPrice(){
+                this.selling_price = Math.floor((Number(this.profit) + Number(this.cost) + Number(this.delivery_fee))/0.9*1.1);
+                
+            },
+            calProfit(){
+                this.profit = Math.floor(Number(this.selling_price)/1.1*0.9-Number(this.delivery_fee)-Number(this.cost));
+            }
+    
+        }
+    })
+
+</script>
