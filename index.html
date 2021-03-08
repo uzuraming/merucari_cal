@@ -96,7 +96,7 @@
         methods:{
            
             calSellingPrice(){
-                this.selling_price = Math.floor((Number(this.profit) + Number(this.cost) + Number(this.delivery_fee))*1.1);
+                this.selling_price = Math.floor((Number(this.profit) + Number(this.cost) + Number(this.delivery_fee))/0.9);
                 
             },
             calProfit(){
