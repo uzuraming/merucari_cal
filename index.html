@@ -46,6 +46,10 @@
                     </div>
                     <input required v-model="delivery_fee" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
+
+            
+
+
                 <div class="input-group input-group-lg my-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-lg">利益</span>
@@ -92,11 +96,11 @@
         methods:{
            
             calSellingPrice(){
-                this.selling_price = Math.floor((Number(this.profit) + Number(this.cost) + Number(this.delivery_fee))/0.9*1.1);
+                this.selling_price = Math.floor((Number(this.profit) + Number(this.cost) + Number(this.delivery_fee))*1.1);
                 
             },
             calProfit(){
-                this.profit = Math.floor(Number(this.selling_price)/1.1*0.9-Number(this.delivery_fee)-Number(this.cost));
+                this.profit = Math.floor(Number(this.selling_price)*0.9-Number(this.delivery_fee)-Number(this.cost));
             }
     
         }
